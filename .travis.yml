@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  — "lts/*"
+  — "v10.13.0"
 script:
   — echo “Deploy!!”
 install:
