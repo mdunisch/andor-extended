@@ -5,4 +5,4 @@ branches:
     - master
 script: echo “Deploy!!”
 install: npm install -g firebase-tools
-after_success: firebase deploy --only hosting --project andor-extended
+after_success: firebase deploy --only hosting --project andor-extended
