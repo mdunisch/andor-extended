@@ -8,6 +8,7 @@ firebase-debug.log*
 
 # Firebase cache
 .firebase/
+.cache/
 
 
 # Dependency directories
@@ -15,4 +16,7 @@ node_modules/
 
 # webstorm
 .idea/
+
+# Hosting build
+hosting/dist/
 
