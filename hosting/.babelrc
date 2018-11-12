@@ -1,5 +1,17 @@
 {
   "presets": [
-    "env"
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "targets": {
+          "browsers": [
+            "> 1% in DE",
+            "last 2 versions",
+            "ie > 11"
+          ]
+        }
+      }
+    ]
   ]
 }
