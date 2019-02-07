@@ -4,19 +4,20 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "firebase": "^5.5.8",
-    "vue": "^2.5.17",
-    "vuex": "^3.0.1",
-    "vuex-easy-firestore": "^1.16.3"
+    "element-ui": "^2.5.4",
+    "firebase": "^5.8.2",
+    "vue": "^2.6.3",
+    "vuex": "^3.1.0"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^2.3.0",
+    "@vue/component-compiler-utils": "^2.5.2",
     "babel-core": "^6.26.3",
+    "babel-plugin-component": "^1.1.1",
     "babel-preset-env": "^1.7.0",
-    "eslint": "^5.9.0",
-    "vue-template-compiler": "^2.5.17",
-    "parcel-bundler": "^1.10.3",
-    "vue-hot-reload-api": "^2.3.1"
+    "eslint": "^5.13.0",
+    "parcel-bundler": "^1.11.0",
+    "vue-hot-reload-api": "^2.3.1",
+    "vue-template-compiler": "^2.6.3"
   },
   "scripts": {
     "predev": "rm -rf dist",
