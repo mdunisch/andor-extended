@@ -22,7 +22,7 @@
     "predev": "rm -rf dist",
     "dev": "parcel client/index.html",
     "prebuild": "rm -rf dist",
-    "build": "eslint . && parcel build client/index.html"
+    "build": "eslint . && parcel build client/index.html --no-source-maps"
   },
   "repository": {
     "type": "git",
