@@ -29,13 +29,17 @@ export default new Vuex.Store({
       state.name = newName;
     },
     changeSorting(state, { direction, index }){
+
+      const cardsInStore = [...state.cards];
+
       if(direction === 'up'){
-        [state.cards[index - 1], state.cards[index]] = [state.cards[index], state.cards[index - 1]];
+        [cardsInStore[index - 1], cardsInStore[index]] = [cardsInStore[index], cardsInStore[index - 1]];
       }
       if(direction === 'down') {
-        [state.cards[index], state.cards[index - 1]] = [state.cards[index - 1], state.cards[index]];
-
+        [cardsInStore[index], cardsInStore[index + 1]] = [cardsInStore[index + 1], cardsInStore[index]];
       }
+
+      state.cards = cardsInStore;
     }
   }
 })

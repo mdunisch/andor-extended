@@ -38,7 +38,7 @@
   export default {
       computed: {
         cards() {
-            return this.$store.state.cards
+            return this.$store.state.cards;
         }
       },
       methods: {
