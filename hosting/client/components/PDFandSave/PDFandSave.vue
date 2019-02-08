@@ -1,5 +1,5 @@
 <template>
-    <el-row>
+    <el-row style="width: 100%">
         <el-col :span="12">
             <el-button type="primary" icon="el-icon-download">Download als PDF</el-button>
         </el-col>

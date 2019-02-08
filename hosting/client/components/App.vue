@@ -11,7 +11,7 @@
                         <h5 style="margin-top: 0">Deine Karten</h5>
                         <CardsOverview></CardsOverview>
                     </el-main>
-                    <el-footer>
+                    <el-footer class="footer">
                         <PDFandSave></PDFandSave>
                     </el-footer>
                 </el-container>
