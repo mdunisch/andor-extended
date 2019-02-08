@@ -4,32 +4,18 @@
       empty-text="Noch keine Karten angelegt"
       style="width: 100%">
       <el-table-column
-        prop="date"
-        label="Date"
-        width="180">
-      </el-table-column>
-      <el-table-column
         prop="name"
-        label="Name"
-        width="180">
+        label="Name">
       </el-table-column>
-      <el-table-column
-        prop="address"
-        label="Address">
-      </el-table-column>
-      <el-table-column
-        label="Sortierung">
+      <el-table-column>
           <template slot-scope="scope">
-            <el-button
-            size="mini"
-            icon="el-icon-arrow-down"
-            @click="handleSorting('down', scope.$index)"
-            v-if="scope.$index !== (cards.length - 1)"></el-button>
-            <el-button
-            size="mini"
-            icon="el-icon-arrow-up"
-            @click="handleSorting('up', scope.$index)"
-            v-if="scope.$index !== 0"></el-button>
+            <div style="text-align: right">
+              <el-button
+              size="mini"
+              type="danger"
+              icon="el-icon-delete"
+              @click="handleDelete(scope.$index)"></el-button>
+            </div>
         </template>
       </el-table-column>
     </el-table>
@@ -38,13 +24,15 @@
   export default {
       computed: {
         cards() {
-            return this.$store.state.cards;
+            return this.$store.getters.getCards;
         }
       },
       methods: {
-        handleSorting(direction, index) {
-            this.$store.commit('changeSorting', { direction, index });
-        }
+        handleDelete(index) {
+          if(window.confirm('Willst du diese Karte wirklich löschen?')){
+            this.$store.commit('deleteCard', index);
+          }
+        },
     }
   }
 </script>

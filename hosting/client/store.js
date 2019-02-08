@@ -3,24 +3,46 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+/**
+ * 
+ * @param {object} card1 
+ * @param {object} card2
+ * @returns {number} 
+ */
+const sorter = (card1, card2) => {
+  return (
+    // Type sort
+    card1.type.localeCompare(card2.type)
+    // Name sort
+    - card1.name.localeCompare(card2.name)
+  );
+};
+
+
 export default new Vuex.Store({
   state: {
     name: null,
     cards: [
       {
-        date: '1',
-        name: 'das222',
-        address: 'Fadasd 22'
+        type: 'custom',
+        name: 'Bittere Pille',
+        subname: 'Wird aufgedeckt sobald....',
+        content: ''
       },
       {
-        date: '2',
-        name: 'das222',
-        address: 'Fadasd 22'
+        type: 'letter',
+        name: 'A1',
+        content: ''
       },
       {
-        date: '3',
-        name: 'das222',
-        address: 'Fadasd 22'
+        type: 'letter',
+        name: 'C',
+        content: ''
+      },
+      {
+        type: 'letter',
+        name: 'A2',
+        content: ''
       }
     ]
   },
@@ -28,18 +50,13 @@ export default new Vuex.Store({
     setName(state, newName) {
       state.name = newName;
     },
-    changeSorting(state, { direction, index }){
-
-      const cardsInStore = [...state.cards];
-
-      if(direction === 'up'){
-        [cardsInStore[index - 1], cardsInStore[index]] = [cardsInStore[index], cardsInStore[index - 1]];
-      }
-      if(direction === 'down') {
-        [cardsInStore[index], cardsInStore[index + 1]] = [cardsInStore[index + 1], cardsInStore[index]];
-      }
-
-      state.cards = cardsInStore;
+    deleteCard(state, cardIndex) {
+      state.cards.splice(cardIndex, 1);
+    }
+  },
+  getters: {
+    getCards: state => {
+      return state.cards.sort(sorter).reverse();
     }
   }
-})
+});
