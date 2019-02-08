@@ -17,6 +17,9 @@ node_modules/
 # webstorm
 .idea/
 
+# mac
+.DS_Store
+
 # Hosting build
 hosting/dist/
 
