@@ -10,16 +10,13 @@ Vue.use(Vuex);
  * @returns {number} 
  */
 const sorter = (card1, card2) => {
+  // If not the same type order by type
+  if(card2.type !== card1.type) {
+    return (card2.type === 'letter') ? 1 : -1;
+  }
 
-  // Todo: Get letter Cards first (alphabetic order)
-  // Order in this two Groups alphabetially
-
-  return (
-    // Type sort
-    card1.type.localeCompare(card2.type)
-    // Name sort
-    - card1.name.localeCompare(card2.name)
-  );
+  // Sort by name
+  return card1.name.localeCompare(card2.name);
 };
 
 
@@ -67,7 +64,7 @@ export default new Vuex.Store({
   },
   getters: {
     getCards: state => {
-      return state.cards.sort(sorter).reverse();
+      return state.cards.sort(sorter);
     }
   }
 });
