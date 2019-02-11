@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 // adding Element UI
-import { Button, Row, Col, Container, Header, Main, Aside, Footer, Table, Form, FormItem, Input, TableColumn } from 'element-ui';
+import { Button, Row, Col, Container, Header, Main, Aside, Footer, Table, Form, FormItem, Input, TableColumn, Radio, RadioGroup } from 'element-ui';
 
 Vue.use(Button);
 Vue.use(Row);
@@ -16,6 +16,8 @@ Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Input);
 Vue.use(TableColumn);
+Vue.use(Radio);
+Vue.use(RadioGroup);
 
 import App from './components/App';
 import store from './store';

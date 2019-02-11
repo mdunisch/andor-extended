@@ -9,7 +9,7 @@
       </el-table-column>
       <el-table-column>
           <template slot-scope="scope">
-            <div style="text-align: right">
+            <div class="text-right">
               <el-button
               size="mini"
               type="danger"
@@ -38,4 +38,7 @@
 </script>
 
 <style scoped>
+.text-right {
+  text-align: right
+}
 </style>

@@ -10,6 +10,10 @@ Vue.use(Vuex);
  * @returns {number} 
  */
 const sorter = (card1, card2) => {
+
+  // Todo: Get letter Cards first (alphabetic order)
+  // Order in this two Groups alphabetially
+
   return (
     // Type sort
     card1.type.localeCompare(card2.type)
@@ -22,6 +26,7 @@ const sorter = (card1, card2) => {
 export default new Vuex.Store({
   state: {
     name: null,
+    newCardOpen: false,
     cards: [
       {
         type: 'custom',
@@ -52,6 +57,12 @@ export default new Vuex.Store({
     },
     deleteCard(state, cardIndex) {
       state.cards.splice(cardIndex, 1);
+    },
+    changeVisibleOfNewCard(state, open) {
+      state.newCardOpen = open;
+    },
+    addCard(state, carddata) {
+      state.cards.push(carddata);
     }
   },
   getters: {

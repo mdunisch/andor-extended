@@ -1,14 +1,32 @@
 <template>
     <el-container class="fullHeight">
         <el-container>
-            <el-aside width="50%">Aside</el-aside>
+            <el-aside width="50%">
+                <el-container class="fullHeight">
+                    <el-main>
+                        <NewCard></NewCard>
+                    </el-main>
+                </el-container>
+            </el-aside>
             <el-main class="main">
                 <el-container class="fullHeight">
                     <el-header>
                         <BasicInfos></BasicInfos>
                     </el-header>
                     <el-main>
-                        <h5 style="margin-top: 0">Deine Karten</h5>
+                        <el-row style="width: 100%">
+                            <el-col :span="12">
+                                <h5 style="margin-top: 0">Deine Karten</h5>
+                            </el-col>
+                            <el-col :span="12" style="text-align: right;">
+                                <el-button 
+                                type="info" 
+                                size="mini" 
+                                icon="el-icon-circle-plus"
+                                @click="handleNewCard">
+                                Neu</el-button>
+                            </el-col>
+                        </el-row>
                         <CardsOverview></CardsOverview>
                     </el-main>
                     <el-footer class="footer">
@@ -19,7 +37,7 @@
         </el-container>
         <el-footer class="footer">
             <small>Andor/Die Legenden von Antor ist eine Marke der Franckh-Kosmos Verlags-GmbH & Co. KG, durch die die vorliegende Webseite weder gesponsert noch autorisiert oder unterstützt wird.</small>
-            <el-button size="mini">Kontakt / Feedback</el-button>
+            <el-button size="mini" @click="openGoogleForms">Kontakt / Feedback</el-button>
         </el-footer>
     </el-container>
 </template>
@@ -28,11 +46,22 @@
     import BasicInfos from './BasicInfos/BasicInfos';
     import PDFandSave from './PDFandSave/PDFandSave';
     import CardsOverview from './CardsOverview/CardsOverview';
+    import NewCard from './NewCard/NewCard.vue';
 
     export default {
-      components: { BasicInfos, PDFandSave, CardsOverview },
+      components: { BasicInfos, PDFandSave, CardsOverview, NewCard },
       created () {
-        console.log(this.$store.state);
+        console.log('Starting...');
+      },
+      methods: {
+          openGoogleForms() {
+              window.open('https://goo.gl/forms/834NVBDKokUASJeq1');
+          },
+          handleNewCard() {
+              if(!this.$store.state.newCardOpen) {
+                this.$store.commit('changeVisibleOfNewCard', true);
+              }
+          }
       }
     }
 </script>
