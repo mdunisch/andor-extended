@@ -4,20 +4,17 @@
         <div class="number">{{ cardData.name[0] }} 
             <span>{{ cardData.name[1] || '' }}</span>
         </div>
-        <div class="text" v-html="getMD(cardData.text || '')"></div>
+        <div class="text" v-html="MDtoHTML(cardData.text || '')"></div>
     </div>
 </template>
 
 <script>
-    const MarkdownIt = require('markdown-it');
-    const md = new MarkdownIt();
+    import MDtoHTML from 'marked';
 
     export default {
         props: ['cardData'],
         methods: {
-            getMD(text){
-                return md.render(text);
-            } 
+            MDtoHTML
         },
         computed: {
             name() {
