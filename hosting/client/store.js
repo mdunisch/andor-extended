@@ -23,7 +23,7 @@ const sorter = (card1, card2) => {
 export default new Vuex.Store({
   state: {
     name: null,
-    newCardOpen: false,
+    newCardOpen: true,
     cards: [
       {
         type: 'custom',

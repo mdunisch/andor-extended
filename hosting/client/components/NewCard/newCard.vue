@@ -38,12 +38,13 @@
                 </el-row>
             </el-form-item>
         </el-form>
-        <span>Todo: Hier noch ein renderBeispiel</span>
+        <CardPreview v-bind:cardData="form"></CardPreview>
     </div>
 </template>
 
 <script>
-    import { mapState } from 'vuex'
+    import { mapState } from 'vuex';
+    import CardPreview from './../CardPreview/CardPreview';
 
     export default {
         data() {
@@ -68,7 +69,8 @@
                 this.$store.commit('addCard', {...this.form});
                 this.clear();
             }
-        }
+        },
+        components: { CardPreview }
     }
 </script>
 

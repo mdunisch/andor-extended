@@ -14,14 +14,12 @@
   import { saveAs } from 'file-saver';
 
   export default {
-
       methods: {
           saveState() {
               const blob = new Blob([JSON.stringify(this.$store.state)], {type: "application/json"});
               saveAs(blob);
           }
       }
-
   }
 </script>
 
