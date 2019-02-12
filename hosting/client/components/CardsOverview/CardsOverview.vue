@@ -12,14 +12,20 @@
             <div class="text-right">
               <el-button
               size="mini"
+              type="warning"
+              icon="el-icon-edit"
+              @click="handleEdit(scope.row.id)"></el-button>
+              <el-button
+              size="mini"
               type="danger"
               icon="el-icon-delete"
-              @click="handleDelete(scope.$index)"></el-button>
+              @click="handleDelete(scope.row.id)"></el-button>
             </div>
         </template>
       </el-table-column>
     </el-table>
 </template>
+
 <script>
   export default {
       computed: {
@@ -28,11 +34,14 @@
         }
       },
       methods: {
-        handleDelete(index) {
+        handleDelete(id) {
           if(window.confirm('Willst du diese Karte wirklich löschen?')){
-            this.$store.commit('deleteCard', index);
+            this.$store.commit('deleteCard', id);
           }
         },
+        handleEdit(id) {
+          this.$store.commit('editCard', id);
+        }
     }
   }
 </script>

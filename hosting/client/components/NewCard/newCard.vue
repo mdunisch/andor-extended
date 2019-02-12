@@ -1,26 +1,26 @@
 <template>
-    <div v-if="newCardOpen">
-        <el-form :model="form" @submit.native.prevent="save">
+    <div v-if="newCardOpenIndex">
+        <el-form @submit.native.prevent="close">
             <el-form-item label="Name der Karte">
-                <el-input v-model="form.name" required></el-input>
+                <el-input v-model="cardData.name" required></el-input>
             </el-form-item>
             <el-form-item label="Typ der Karte">
-                <el-radio-group v-model="form.type">
+                <el-radio-group v-model="cardData.type">
                     <el-radio label="letter">Buchstabe</el-radio>
                     <el-radio label="custom">Sonstiges</el-radio>
                 </el-radio-group>
             </el-form-item>
             <el-form-item label="Subtext der Karte">
                 <el-input 
-                v-model="form.subname" 
+                v-model="cardData.subname" 
                 required
                 placeholder="Karte wird aufgedeckt, wenn"
-                :disabled="(form.type === 'letter')"></el-input>
+                :disabled="(cardData.type === 'letter')"></el-input>
             </el-form-item>
             <el-form-item label="Kartentext">
                 <el-input 
                 type="textarea" 
-                v-model="form.text" 
+                v-model="cardData.text" 
                 required 
                 rows="7"
                 style="resize: none"
@@ -30,7 +30,7 @@
             <el-form-item>
                 <el-row style="width: 100%">
                     <el-col :span="12">
-                        <el-button type="info" @click="clear">Abbrechen</el-button>
+                        <el-button type="info" @click="close">Schließen</el-button>
                     </el-col>
                     <el-col :span="12" style="text-align: right;">
                         <el-button type="primary" native-type="submit">Speichern</el-button>
@@ -38,7 +38,7 @@
                 </el-row>
             </el-form-item>
         </el-form>
-        <CardPreview v-bind:cardData="form"></CardPreview>
+        <CardPreview v-bind:cardData="cardData"></CardPreview>
     </div>
 </template>
 
@@ -47,30 +47,18 @@
     import CardPreview from './../CardPreview/CardPreview';
 
     export default {
-        data() {
-            return {
-                form: {
-                    name: '',
-                    subname: '',
-                    type: 'letter',
-                    text: ''
-                }
+        components: { CardPreview },
+        computed: {
+            ...mapState(['newCardOpenIndex']),
+            cardData(){
+                return this.$store.state.cards.find(i => i.id === this.$store.state.newCardOpenIndex)
             }
         },
-        computed: mapState(['newCardOpen']),
         methods: {
-            clear() {
-                // Reset State
-                Object.assign(this.$data, this.$options.data());
-                // Close window
-                this.$store.commit('changeVisibleOfNewCard', false);
-            },
-            save(){
-                this.$store.commit('addCard', {...this.form});
-                this.clear();
+            close(){
+                this.$store.commit('closeCardWindow');
             }
-        },
-        components: { CardPreview }
+        }
     }
 </script>
 

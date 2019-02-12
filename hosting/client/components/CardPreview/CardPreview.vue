@@ -4,7 +4,7 @@
         <div class="number">{{ cardData.name[0] }} 
             <span>{{ cardData.name[1] || '' }}</span>
         </div>
-        <div class="text" v-html="getMD(cardData.text)"></div>
+        <div class="text" v-html="getMD(cardData.text || '')"></div>
     </div>
 </template>
 

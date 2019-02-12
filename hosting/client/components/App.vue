@@ -58,9 +58,7 @@
               window.open('https://goo.gl/forms/834NVBDKokUASJeq1');
           },
           handleNewCard() {
-              if(!this.$store.state.newCardOpen) {
-                this.$store.commit('changeVisibleOfNewCard', true);
-              }
+            this.$store.commit('addCard');
           }
       }
     }

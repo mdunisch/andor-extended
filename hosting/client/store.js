@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import Nanoid from 'nanoid';
 
 Vue.use(Vuex);
 
@@ -21,30 +22,35 @@ const sorter = (card1, card2) => {
 
 
 export default new Vuex.Store({
+  //strict: true,
   state: {
     name: null,
-    newCardOpen: true,
+    newCardOpenIndex: null,
     cards: [
       {
         type: 'custom',
         name: 'Bittere Pille',
         subname: 'Wird aufgedeckt sobald....',
-        content: ''
+        content: '',
+        id: 2
       },
       {
         type: 'letter',
         name: 'A1',
-        content: ''
+        content: '',
+        id: 66
       },
       {
         type: 'letter',
         name: 'C',
-        content: ''
+        content: '',
+        id: 44
       },
       {
         type: 'letter',
         name: 'A2',
-        content: ''
+        content: '',
+        id: 87
       }
     ]
   },
@@ -52,19 +58,38 @@ export default new Vuex.Store({
     setName(state, newName) {
       state.name = newName;
     },
-    deleteCard(state, cardIndex) {
-      state.cards.splice(cardIndex, 1);
+    deleteCard(state, cardId) {
+      
+      // if this card is currently open
+      if(state.newCardOpenIndex === cardId){
+        state.newCardOpenIndex = null;
+      }
+
+      state.cards = state.cards.filter(i => i.id != cardId);
     },
-    changeVisibleOfNewCard(state, open) {
-      state.newCardOpen = open;
+    editCard(state, cardId) {
+      state.newCardOpenIndex = cardId;
     },
-    addCard(state, carddata) {
-      state.cards.push(carddata);
+    closeCardWindow(state) {
+      state.newCardOpenIndex  = null;
+    },
+    addCard(state) {
+
+      const newId = Nanoid();
+      state.cards.push({
+        name: '',
+        subname: '',
+        type: 'letter',
+        text: '',
+        id: newId
+      });
+
+      state.newCardOpenIndex = newId;
     }
   },
   getters: {
     getCards: state => {
-      return state.cards.sort(sorter);
+      return [...state.cards].sort(sorter);
     }
   }
 });
