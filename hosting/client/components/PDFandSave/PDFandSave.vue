@@ -19,6 +19,18 @@
       >
         Speichern
       </el-button>
+      <el-button
+        type="primary"
+        icon="el-icon-upload2"
+        style="position: relative;"
+      >
+        <input 
+          type="file" 
+          accept=".json"
+          @change="loadState"
+        />
+        Laden
+      </el-button>
     </el-col>
   </el-row>
 </template>
@@ -32,11 +44,44 @@
           saveState() {
               const blob = new Blob([JSON.stringify(this.$store.state)], {type: "application/json"});
               saveAs(blob);
+          },
+          loadState(e){
+            try {
+              const file = e.target.files[0];
+              const reader = new FileReader();
+
+              reader.onload = e => {
+                const newState = JSON.parse(e.target.result);
+                if(!this.validateJson(newState)){
+                  return window.alert('Fehler beim laden der Datei');
+                }
+                this.$store.commit('loadState', newState);
+              };
+              // Start reading file
+              reader.readAsText(file);
+            } catch(e) {
+              window.alert('Fehler beim laden der Datei');
+            } 
+          },
+          // Simple validation of Loading JSON
+          validateJson(object){
+            if(!object.name || !object.newCardOpenIndex || !Array.isArray(object.cards)){
+              return false;
+            }
+            return true;
           }
       }
   }
 </script>
 
 <style scoped>
+input[type="file"] {
+  position: absolute;
+    left: 0;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
 </style>
 

@@ -8,7 +8,8 @@
         "sourceType": "module"
     },
     "rules": {
-        "vue/no-v-html": false
+        "vue/no-v-html": false,
+        "vue/html-self-closing": false
     },
     "overrides": [
         {

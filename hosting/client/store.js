@@ -58,6 +58,11 @@ export default new Vuex.Store({
     setName(state, newName) {
       state.name = newName;
     },
+    loadState(state, newState){
+      state.name = newState.name;
+      state.newCardOpenIndex = newState.newCardOpenIndex;
+      state.cards = newState.cards;
+    },
     deleteCard(state, cardId) {
       
       // if this card is currently open

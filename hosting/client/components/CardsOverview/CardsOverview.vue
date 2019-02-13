@@ -7,7 +7,8 @@
     <el-table-column
       prop="name"
       label="Name"
-    />
+    >
+    </el-table-column>
     <el-table-column>
       <template slot-scope="scope">
         <div class="text-right">
@@ -16,7 +17,7 @@
             type="warning"
             icon="el-icon-edit"
             @click="handleEdit(scope.row.id)"
-          />
+          ></el-button>
           <el-button
             size="mini"
             type="danger"
