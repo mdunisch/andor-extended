@@ -1,9 +1,18 @@
 {
     "extends": [
-        "eslint:recommended"
+        "eslint:recommended",
+        "plugin:vue/recommended"
     ],
     "parserOptions": {
-        "ecmaVersion": 2017,
+        "ecmaVersion": 2018,
         "sourceType": "module"
-    }
+    },
+    "rules": {
+        "vue/no-v-html": false
+    },
+    "overrides": [
+        {
+            "files": [ "your/globs/**/*.js" ]
+        }
+    ]
 }

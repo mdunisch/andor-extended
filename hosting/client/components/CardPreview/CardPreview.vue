@@ -1,25 +1,40 @@
 <template>
-    <div class="card">
-        <div class="name">{{ name }}</div>
-        <div class="number">{{ cardData.name[0] }} 
-            <span>{{ cardData.name[1] || '' }}</span>
-        </div>
-        <div class="text" v-html="MDtoHTML(cardData.text || '')"></div>
+  <div class="card">
+    <div class="name">
+      {{ name }}
     </div>
+    <div class="number">
+      {{ cardData.name[0] }} 
+      <span>{{ cardData.name[1] || '' }}</span>
+    </div>
+    <div
+      class="text"
+      v-html="MDtoHTML(cardData.text || '')"
+    />
+  </div>
 </template>
 
 <script>
     import MDtoHTML from 'marked';
 
+    MDtoHTML.setOptions({
+        sanitize: true
+    });
+
     export default {
-        props: ['cardData'],
-        methods: {
-            MDtoHTML
+        props: {
+            cardData: {
+                type: Object,
+                default: () => {}
+            }
         },
         computed: {
             name() {
                 return this.$store.state.name
             }
+        },
+        methods: {
+            MDtoHTML
         }
     }
 </script>
