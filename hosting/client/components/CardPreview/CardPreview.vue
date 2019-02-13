@@ -1,18 +1,34 @@
 <template>
   <div class="card">
-    <div class="name">
-      {{ name }}
+    <div 
+      class="left"
+      :class="{ 'left_letter': cardData.type === 'letter' }"
+    >
+      <div class="name">
+        {{ name }}
+      </div>
+      <div 
+        v-if="(cardData.type === 'letter')"
+        class="number"
+      >
+        {{ cardData.name[0] }} 
+        <span>{{ cardData.name[1] || '' }}</span>
+      </div>
+      <div 
+        class="cardname"
+        v-if="(cardData.type != 'letter')"
+      >
+        <div class="title">
+          {{ cardData.name }}
+        </div>
+        <div class="subname">
+          {{ cardData.subname }}
+        </div>
+      </div>
     </div>
     <div 
-      v-if="(cardData.type === 'letter')"
-      class="number"
-    >
-      {{ cardData.name[0] }} 
-      <span>{{ cardData.name[1] || '' }}</span>
-    </div>
-    <div
-      class="text"
-      v-html="MDtoHTML(cardData.text || '')"
+      class="right text" 
+      v-html="MDtoHTML(cardData.text || '')" 
     />
   </div>
 </template>
@@ -47,14 +63,30 @@
 <style scoped>
 
     .card {
-        background-image: url('./../../asserts/blanco_card.png');
         height: 452px;
         width: 604px;
-        background-size: 100%;
         position: relative;
         font-family: 'Crimson Text', serif;
     }
 
+    .left {
+        background-image: url('./../../asserts/cardgfx/mini/left_ohne.png');
+        background-size: cover;
+        position: relative;
+        height: 100%;
+        width: 50%;
+    }
+
+    .left_letter {
+        background-image: url('./../../asserts/cardgfx/mini/left_mit.png');
+    }
+
+    .right {
+        background-image: url('./../../asserts/cardgfx/mini/right.png');
+        background-size: cover;
+    }
+
+   
     .card .text {
         position: absolute;
         right: 0;
@@ -70,10 +102,23 @@
     .card .name {
         font-weight: bold;
         text-align: center;
-        width: 50%;
-        position: absolute;
+        position: relative;
         top: 180px;
         font-size: 17px;
+    }
+
+     .card .cardname {
+        text-align: center;
+        position: relative;
+        top: 280px;
+    }
+    .card .cardname .title {
+        font-weight: bold;
+        font-size: 17px;
+    }
+    .card .cardname .subname {
+        margin: 0 40px;
+        line-height: 1em;
     }
 
     .card .number {
@@ -83,7 +128,7 @@
         font-size: 100px;
         position: absolute;
         top: 200px;
-        left: 95px;
+        left: 100px;
     }
 
     .card .number span {
