@@ -27,7 +27,7 @@
     "dev": "parcel client/index.html",
     "prebuild": "rm -rf dist",
     "lint": "eslint --ext .js,.vue . --fix",
-    "build": "lint && parcel build client/index.html --no-source-maps --detailed-report"
+    "build": "npm run lint && parcel build client/index.html --no-source-maps --detailed-report"
   },
   "repository": {
     "type": "git",

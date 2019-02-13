@@ -15,8 +15,8 @@
         <span>{{ cardData.name[1] || '' }}</span>
       </div>
       <div 
-        class="cardname"
         v-if="(cardData.type != 'letter')"
+        class="cardname"
       >
         <div class="title">
           {{ cardData.name }}
