@@ -3,7 +3,10 @@
     <div class="name">
       {{ name }}
     </div>
-    <div class="number">
+    <div 
+      v-if="(cardData.type === 'letter')"
+      class="number"
+    >
       {{ cardData.name[0] }} 
       <span>{{ cardData.name[1] || '' }}</span>
     </div>
@@ -18,7 +21,9 @@
     import MDtoHTML from 'marked';
 
     MDtoHTML.setOptions({
-        sanitize: true
+        sanitize: true,
+        breaks: true,
+        gfm: true
     });
 
     export default {
@@ -58,7 +63,8 @@
         height: calc(100% - 10px);
         overflow: hidden;
         padding: 5px 10px;
-        font-size: 12px;
+        font-size: 13px;
+        line-height: 1em;
     }
 
     .card .name {
@@ -92,6 +98,15 @@
         border: none;
         border-top: medium double #333;
         color: #333;
+    }
+
+    .card >>> p {
+        margin: 10px 0;
+    }
+
+    .card >>> ul {
+        padding-left: 2rem;
+        margin: 0;
     }
 
 </style>

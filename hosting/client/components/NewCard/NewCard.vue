@@ -35,7 +35,7 @@
         />
         <small>
           Text unterstützt <a
-            href="https://commonmark.org/help/"
+            href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"
             target="_blank"
           >
             Markdown
