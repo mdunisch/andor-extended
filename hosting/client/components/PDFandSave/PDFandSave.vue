@@ -4,6 +4,7 @@
       <el-button
         type="primary"
         icon="el-icon-download"
+        @click="pdf"
       >
         Download als PDF
       </el-button>
@@ -19,18 +20,15 @@
       >
         Speichern
       </el-button>
-      <el-button
-        type="primary"
-        icon="el-icon-upload2"
-        style="position: relative;"
-      >
+      <div class="el-button el-button--primary" style="position: relative;">
+        <i class="el-icon-upload2"></i>
         <input 
           type="file" 
           accept=".json"
           @change="loadState"
         />
         Laden
-      </el-button>
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -43,7 +41,7 @@
       methods: {
           saveState() {
               const blob = new Blob([JSON.stringify(this.$store.state)], {type: "application/json"});
-              saveAs(blob);
+              saveAs(blob, "andor.json");
           },
           loadState(e){
             try {
@@ -69,6 +67,9 @@
               return false;
             }
             return true;
+          },
+          pdf(){
+            console.log('to pdf');
           }
       }
   }
