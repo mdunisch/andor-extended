@@ -3,10 +3,10 @@
     <el-col :span="12">
       <el-button
         type="primary"
-        icon="el-icon-download"
+        icon="el-icon-printer"
         @click="pdf"
       >
-        Download als PDF
+        Druckversion
       </el-button>
     </el-col>
     <el-col
@@ -20,7 +20,10 @@
       >
         Speichern
       </el-button>
-      <div class="el-button el-button--primary" style="position: relative;">
+      <div
+        class="el-button el-button--primary"
+        style="position: relative;"
+      >
         <i class="el-icon-upload2"></i>
         <input 
           type="file" 
@@ -69,7 +72,7 @@
             return true;
           },
           pdf(){
-            console.log('to pdf');
+            this.$store.commit('showPdf', true);
           }
       }
   }

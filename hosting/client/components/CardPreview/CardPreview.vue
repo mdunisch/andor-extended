@@ -1,5 +1,8 @@
 <template>
-  <div class="card">
+  <div 
+    class="card"
+    :class="{ 'print': print}"
+  >
     <div 
       class="left"
       :class="{ 'left_letter': cardData.type === 'letter' }"
@@ -45,8 +48,12 @@
     export default {
         props: {
             cardData: {
-                type: Object,
-                default: () => {}
+              type: Object,
+              default: () => {}
+            },
+            print: {
+              type: Boolean,
+              default: false
             }
         },
         computed: {
@@ -62,96 +69,125 @@
 
 <style scoped>
 
-    .card {
-        height: 452px;
-        width: 604px;
-        position: relative;
-        font-family: 'Crimson Text', serif;
-    }
+  /**
+  a26f3e (brown)
+  ebd188 (hell)
+  **/
 
-    .left {
-        background-image: url('./../../asserts/cardgfx/mini/left_ohne.png');
-        background-size: cover;
-        position: relative;
-        height: 100%;
-        width: 50%;
-    }
+  .card {
+      height: 452px;
+      width: 604px;
+      position: relative;
+      font-family: 'Crimson Text', serif;
+      color:black;
+  }
 
-    .left_letter {
-        background-image: url('./../../asserts/cardgfx/mini/left_mit.png');
-    }
+  .left {
+      background-image: url('./../../asserts/cardgfx/mini/left_ohne.png');
+      background-size: cover;
+      position: relative;
+      height: 100%;
+      width: 50%;
+  }
 
-    .right {
-        background-image: url('./../../asserts/cardgfx/mini/right.png');
-        background-size: cover;
-    }
+  .left:after{
+    display: none;
+    width: 20px;
+    background: #a26f3e;
+    content: '';
+    position: absolute;
+    left: -15px;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+  }
 
-   
-    .card .text {
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: calc(50% - 20px);
-        height: calc(100% - 10px);
-        overflow: hidden;
-        padding: 5px 10px;
-        font-size: 13px;
-        line-height: 1em;
-    }
+  .card.print >>> .left {
+    background-image: url('./../../asserts/cardgfx/full/left_ohne.png');
+  }
 
-    .card .name {
-        font-weight: bold;
-        text-align: center;
-        position: relative;
-        top: 180px;
-        font-size: 17px;
-    }
+  .left_letter {
+      background-image: url('./../../asserts/cardgfx/mini/left_mit.png');
+  }
 
-     .card .cardname {
-        text-align: center;
-        position: relative;
-        top: 280px;
-    }
-    .card .cardname .title {
-        font-weight: bold;
-        font-size: 17px;
-    }
-    .card .cardname .subname {
-        margin: 0 40px;
-        line-height: 1em;
-    }
+  .card.print >>> .left_letter {
+    background-image: url('./../../asserts/cardgfx/full/left_mit.png');
+  }
 
-    .card .number {
-        -webkit-text-stroke: 2px black;
-        color: white;
+  .right {
+      background-image: url('./../../asserts/cardgfx/mini/right.png');
+      background-size: cover;
+  }
 
-        font-size: 100px;
-        position: absolute;
-        top: 200px;
-        left: 100px;
-    }
+  .card.print >>> .right {
+    background-image: url('./../../asserts/cardgfx/full/right.png');
+  }
+  
+  .card .text {
+      position: absolute;
+      right: 1px;
+      top: -1px;
+      width: calc(50% - 20px);
+      height: calc(100% - 10px);
+      overflow: hidden;
+      padding: 5px 10px;
+      font-size: 13px;
+      line-height: 1em;
+  }
 
-    .card .number span {
-        font-size: 80px;
-        display: inline-block;
-        margin-left: -20px;
-    }
+  .card .name {
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+      top: 180px;
+      font-size: 17px;
+  }
 
-    .card >>> hr {
-        overflow: visible;
-        padding: 0;
-        border: none;
-        border-top: medium double #333;
-        color: #333;
-    }
+    .card .cardname {
+      text-align: center;
+      position: relative;
+      top: 280px;
+  }
+  .card .cardname .title {
+      font-weight: bold;
+      font-size: 17px;
+  }
+  .card .cardname .subname {
+      margin: 0 40px;
+      line-height: 1em;
+  }
 
-    .card >>> p {
-        margin: 10px 0;
-    }
+  .card .number {
+      -webkit-text-stroke: 2px black;
+      color: white;
 
-    .card >>> ul {
-        padding-left: 2rem;
-        margin: 0;
-    }
+      font-size: 100px;
+      position: absolute;
+      top: 200px;
+      left: 100px;
+  }
+
+  .card .number span {
+      font-size: 80px;
+      display: inline-block;
+      margin-left: -20px;
+  }
+
+  .card >>> hr {
+      overflow: visible;
+      padding: 0;
+      border: none;
+      border-top: medium double #333;
+      color: #333;
+  }
+
+  .card >>> p {
+      margin: 10px 0;
+  }
+
+  .card >>> ul {
+      padding-left: 2rem;
+      margin: 0;
+  }
 
 </style>

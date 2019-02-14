@@ -13,7 +13,7 @@
     computed: {
       name: {
         get () {
-          return this.$store.state.name
+          return this.$store.state.name;
         },
         set (value) {
           this.$store.commit('setName', value);

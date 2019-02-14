@@ -51,6 +51,7 @@
         Kontakt / Feedback
       </el-button>
     </el-footer>
+    <PDFView />
   </el-container>
 </template>
 <script>
@@ -59,9 +60,10 @@
     import PDFandSave from './PDFandSave/PDFandSave';
     import CardsOverview from './CardsOverview/CardsOverview';
     import NewCard from './NewCard/NewCard.vue';
+    import PDFView from './PDFView/PDFView.vue';
 
     export default {
-      components: { BasicInfos, PDFandSave, CardsOverview, NewCard },
+      components: { BasicInfos, PDFandSave, CardsOverview, NewCard, PDFView },
       methods: {
           openGoogleForms() {
               window.open('https://goo.gl/forms/834NVBDKokUASJeq1');

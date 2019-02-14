@@ -9,7 +9,8 @@
     },
     "rules": {
         "vue/no-v-html": false,
-        "vue/html-self-closing": false
+        "vue/html-self-closing": false,
+        "vue/max-attributes-per-line": false
     },
     "overrides": [
         {

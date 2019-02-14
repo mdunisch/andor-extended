@@ -26,6 +26,7 @@ export default new Vuex.Store({
   state: {
     name: 'Die dunklen weiten von Andor',
     newCardOpenIndex: 1,
+    showPdf: false,
     cards: [
       {
         type: 'letter',
@@ -62,6 +63,9 @@ export default new Vuex.Store({
     },
     editCard(state, cardId) {
       state.newCardOpenIndex = cardId;
+    },
+    showPdf(state, visible){
+      state.showPdf = visible;
     },
     closeCardWindow(state) {
       state.newCardOpenIndex  = null;
