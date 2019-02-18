@@ -19,6 +19,8 @@
 <script>
 
   import CardPreview from './../CardPreview/CardPreview';
+  import JsPDF from 'jsPDF';
+  import html2canvas from 'html2canvas';
 
   export default {
     components: { CardPreview },
@@ -41,16 +43,20 @@
       },
       download(){
 
+        const pdf = new JsPDF();
         this.loading = true;
 
         // 1. Get PNGs of all Cards in Modal
         // 2. For in array of pngs => Create Page 2 Cards per Page
         // 2. Download pdf
 
-        window.setTimeout(() => {
-          //console.log('starting download + generating pdf');
+        html2canvas(document.querySelector(".card.print")).then(canvas => {
+          const imgData = canvas.toDataURL('image/png');
+          pdf.addImage(imgData, 'PNG', 10, 10);
+          pdf.save('sample-file.pdf');
+
           this.loading = false;
-        }, 2000);
+        });
       }
     }
   }

@@ -43,7 +43,7 @@
       </el-main>
     </el-container>
     <el-footer class="footer">
-      <small>Andor/Die Legenden von Antor ist eine Marke der Franckh-Kosmos Verlags-GmbH & Co. KG, durch die die vorliegende Webseite weder gesponsert noch autorisiert oder unterstützt wird.</small>
+      <small>Andor/Die Legenden von Antor ist eine Marke der Franckh-Kosmos Verlags-GmbH &amp; Co. KG, durch die die vorliegende Webseite weder gesponsert noch autorisiert oder unterstützt wird.</small>
       <el-button
         size="mini"
         @click="openGoogleForms"
@@ -60,7 +60,9 @@
     import PDFandSave from './PDFandSave/PDFandSave';
     import CardsOverview from './CardsOverview/CardsOverview';
     import NewCard from './NewCard/NewCard.vue';
-    import PDFView from './PDFView/PDFView.vue';
+
+    // Code Splitting for PDF-View
+    const PDFView = () => import('./PDFView/PDFView.vue');
 
     export default {
       components: { BasicInfos, PDFandSave, CardsOverview, NewCard, PDFView },
