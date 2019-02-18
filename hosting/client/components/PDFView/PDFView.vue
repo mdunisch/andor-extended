@@ -6,7 +6,7 @@
     :before-close="handleClose"
   >
     <div v-for="card in cards" :key="card.id" class="cards2print">
-      <CardPreview :card-data="card" :print="true" style="margin-bottom: 20px"/>
+      <CardPreview :card-data="card" :print="true" style="margin-bottom: 20px" />
     </div>
     <span slot="title" class="dialog-footer">
       <el-button v-loading="loading" icon="el-icon-download" @click="download">
@@ -19,7 +19,7 @@
 <script>
 
   import CardPreview from './../CardPreview/CardPreview';
-  import JsPDF from 'jsPDF';
+  import JsPDF from 'jspdf';
   import html2canvas from 'html2canvas';
 
   export default {
