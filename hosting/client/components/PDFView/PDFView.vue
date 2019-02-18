@@ -1,7 +1,7 @@
 <template>
   <el-dialog v-if="dialogVisible" :visible="true" :fullscreen="true" :before-close="handleClose">
     <div v-for="(card, index) in cards" :key="card.id" class="cards2print">
-      <CardPreview :card-data="card" :print="true" v-bind:class="{pageBreak: (index % 2 === 0)}"/>
+      <CardPreview :card-data="card" :print="true" :class="{pageBreak: (index % 2 === 0)}" />
     </div>
     <span slot="title" class="dialog-footer">
       <el-button v-loading="loading" icon="el-icon-printer" @click="print">Drucken</el-button> &#x2190; Im Drucken-Menü einfach "Speichern als PDF" auswählen
@@ -12,7 +12,6 @@
 <script>
 
   import CardPreview from './../CardPreview/CardPreview';
-  import html2canvas from 'html2canvas';
 
   export default {
     components: { CardPreview },

@@ -4,14 +4,14 @@
       <el-aside width="50%">
         <el-container class="fullHeight">
           <el-main>
-            <NewCard/>
+            <NewCard />
           </el-main>
         </el-container>
       </el-aside>
       <el-main class="main">
         <el-container class="fullHeight">
           <el-header>
-            <BasicInfos/>
+            <BasicInfos />
           </el-header>
           <el-main>
             <el-row style="width: 100%">
@@ -24,13 +24,15 @@
                   size="mini"
                   icon="el-icon-circle-plus"
                   @click="handleNewCard"
-                >Neu</el-button>
+                >
+                  Neu
+                </el-button>
               </el-col>
             </el-row>
-            <CardsOverview/>
+            <CardsOverview />
           </el-main>
           <el-footer class="footer">
-            <PDFandSave/>
+            <PDFandSave />
           </el-footer>
         </el-container>
       </el-main>
@@ -39,7 +41,7 @@
       <small>Andor/Die Legenden von Antor ist eine Marke der Franckh-Kosmos Verlags-GmbH &amp; Co. KG, durch die die vorliegende Webseite weder gesponsert noch autorisiert oder unterstützt wird.</small>
       <el-button size="mini" @click="openGoogleForms">Kontakt / Feedback</el-button>
     </el-footer>
-    <PDFView/>
+    <PDFView />
   </el-container>
 </template>
 

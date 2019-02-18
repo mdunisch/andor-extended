@@ -11,7 +11,7 @@
         <div class="subname">{{ cardData.subname }}</div>
       </div>
     </div>
-    <div class="right" v-html="MDtoHTML(cardData.text || '')"/>
+    <div class="right" v-html="MDtoHTML(cardData.text || '')" />
   </div>
 </template>
 

@@ -2,7 +2,7 @@
   <div v-if="newCardOpenIndex">
     <el-form @submit.native.prevent="close">
       <el-form-item label="Name der Karte">
-        <el-input v-model="cardData.name" required/>
+        <el-input v-model="cardData.name" required />
       </el-form-item>
       <el-form-item label="Typ der Karte">
         <el-radio-group v-model="cardData.type">
@@ -19,7 +19,7 @@
         />
       </el-form-item>
       <el-form-item label="Kartentext">
-        <el-input v-model="cardData.text" type="textarea" required rows="7" style="resize: none"/>
+        <el-input v-model="cardData.text" type="textarea" required rows="7" style="resize: none" />
         <small>Text unterstützt
           <a
             href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"
@@ -38,7 +38,7 @@
         </el-row>
       </el-form-item>
     </el-form>
-    <CardPreview :card-data="cardData"/>
+    <CardPreview :card-data="cardData" />
   </div>
 </template>
 
