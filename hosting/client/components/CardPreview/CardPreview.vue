@@ -69,11 +69,6 @@
 
 <style scoped>
 
-  /**
-  a26f3e (brown)
-  ebd188 (hell)
-  **/
-
   .card {
     height: 452px;
     width: 604px;

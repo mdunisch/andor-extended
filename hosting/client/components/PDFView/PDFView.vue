@@ -5,7 +5,7 @@
     :fullscreen="true"
     :before-close="handleClose"
   >
-    <div v-for="card in cards" :key="card.id">
+    <div v-for="card in cards" :key="card.id" class="cards2print">
       <CardPreview :card-data="card" :print="true" style="margin-bottom: 20px"/>
     </div>
     <span slot="title" class="dialog-footer">
@@ -42,19 +42,28 @@
         this.$store.commit('showPdf', false);
       },
       download(){
-
-        const pdf = new JsPDF();
+        const pdf = new JsPDF('p', 'mm', 'a4', true);
         this.loading = true;
 
-        // 1. Get PNGs of all Cards in Modal
-        // 2. For in array of pngs => Create Page 2 Cards per Page
-        // 2. Download pdf
+        const cards = [...document.querySelectorAll('.cards2print .card.print')];
+        const allStrongTags = document.querySelectorAll('.cards2print strong');
 
-        html2canvas(document.querySelector(".card.print")).then(canvas => {
-          const imgData = canvas.toDataURL('image/png');
-          pdf.addImage(imgData, 'PNG', 10, 10);
+        // Fix for custom font bold rendering
+        allStrongTags.forEach(strong => {
+          strong.style.top = '-5px';
+          strong.style.position = 'relative';
+        });
+
+        let i = 0;
+        Promise.all(cards.map(card => html2canvas(card, {}))).then(results => {
+          results.forEach(canvas => {
+            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10 + i, 190, 140, '', 'FAST');
+            i = i + 140;
+          });
+
+          allStrongTags.forEach(el => el.setAttribute("style", ""));
+
           pdf.save('sample-file.pdf');
-
           this.loading = false;
         });
       }
