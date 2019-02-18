@@ -7,7 +7,6 @@
     "element-ui": "^2.5.4",
     "file-saver": "^2.0.1",
     "html2canvas": "^1.0.0-alpha.12",
-    "jspdf": "^1.5.3",
     "marked": "^0.6.0",
     "nanoid": "^2.0.1",
     "vue": "^2.6.6",

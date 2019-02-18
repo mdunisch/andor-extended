@@ -48,9 +48,10 @@ import BasicInfos from "./BasicInfos/BasicInfos";
 import PDFandSave from "./PDFandSave/PDFandSave";
 import CardsOverview from "./CardsOverview/CardsOverview";
 import NewCard from "./NewCard/NewCard.vue";
+import PDFView from "./PDFView/PDFView.vue";
 
 // Code Splitting for PDF-View
-const PDFView = () => import("./PDFView/PDFView.vue");
+//const PDFView = () => import("./PDFView/PDFView.vue");
 
 export default {
   components: { BasicInfos, PDFandSave, CardsOverview, NewCard, PDFView },

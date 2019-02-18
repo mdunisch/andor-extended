@@ -53,6 +53,7 @@ export default {
   position: relative;
   font-family: "Crimson Text", serif;
   color: black;
+  letter-spacing: -0.2px;
   background: linear-gradient(90deg, #a26f3e 50%, #ebd188 50%);
 }
 
@@ -67,6 +68,8 @@ export default {
 
 .card.print {
   padding: 25px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .card.print >>> .left {
