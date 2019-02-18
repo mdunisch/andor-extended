@@ -164,8 +164,9 @@
       overflow: visible;
       padding: 0;
       border: none;
-      border-top: medium double #333;
-      color: #333;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+      padding-top: 1px;
   }
 
   .card >>> p {
