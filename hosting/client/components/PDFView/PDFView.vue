@@ -6,7 +6,7 @@
     :before-close="handleClose"
   >
     <div v-for="card in cards" :key="card.id">
-      <CardPreview :card-data="card" :print="true" />
+      <CardPreview :card-data="card" :print="true" style="margin-bottom: 20px"/>
     </div>
     <span slot="title" class="dialog-footer">
       <el-button v-loading="loading" icon="el-icon-download" @click="download">

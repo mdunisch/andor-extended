@@ -30,7 +30,7 @@
       </div>
     </div>
     <div 
-      class="right text" 
+      class="right" 
       v-html="MDtoHTML(cardData.text || '')" 
     />
   </div>
@@ -75,39 +75,36 @@
   **/
 
   .card {
-      height: 452px;
-      width: 604px;
-      position: relative;
-      font-family: 'Crimson Text', serif;
-      color:black;
+    height: 452px;
+    width: 604px;
+    position: relative;
+    font-family: 'Crimson Text', serif;
+    color:black;
+    background: linear-gradient(90deg, #a26f3e 50%, #ebd188 50%);
   }
 
   .left {
       background-image: url('./../../asserts/cardgfx/mini/left_ohne.png');
       background-size: cover;
-      position: relative;
       height: 100%;
       width: 50%;
+      float: left;
+      position: relative;
   }
 
-  .left:after{
-    display: none;
-    width: 20px;
-    background: #a26f3e;
-    content: '';
-    position: absolute;
-    left: -15px;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
+  .card.print {
+    padding: 25px;
   }
 
   .card.print >>> .left {
     background-image: url('./../../asserts/cardgfx/full/left_ohne.png');
+    border: 1px dashed black;
+    border-right: none;
+    left: -1px;
   }
 
   .left_letter {
-      background-image: url('./../../asserts/cardgfx/mini/left_mit.png');
+    background-image: url('./../../asserts/cardgfx/mini/left_mit.png');
   }
 
   .card.print >>> .left_letter {
@@ -117,22 +114,17 @@
   .right {
       background-image: url('./../../asserts/cardgfx/mini/right.png');
       background-size: cover;
-  }
-
-  .card.print >>> .right {
-    background-image: url('./../../asserts/cardgfx/full/right.png');
-  }
-  
-  .card .text {
-      position: absolute;
-      right: 1px;
-      top: -1px;
-      width: calc(50% - 20px);
       height: calc(100% - 10px);
       overflow: hidden;
       padding: 5px 10px;
       font-size: 13px;
       line-height: 1em;
+  }
+
+  .card.print >>> .right {
+    background-image: url('./../../asserts/cardgfx/full/right.png');
+    border: 1px dashed black;
+    border-left: none;
   }
 
   .card .name {
@@ -143,7 +135,7 @@
       font-size: 17px;
   }
 
-    .card .cardname {
+  .card .cardname {
       text-align: center;
       position: relative;
       top: 280px;
