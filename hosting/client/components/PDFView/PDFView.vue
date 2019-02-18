@@ -48,11 +48,11 @@
         const cards = [...document.querySelectorAll('.cards2print .card.print')];
         const allStrongTags = document.querySelectorAll('.cards2print strong');
 
-        // Fix for custom font bold rendering
-        allStrongTags.forEach(strong => {
-          strong.style.top = '-5px';
-          strong.style.position = 'relative';
-        });
+        // Fix for custom font bold rendering on Chrome
+        if(navigator.userAgent.indexOf('Chrome')) {
+          allStrongTags.forEach(strong => strong.setAttribute('style', 'top: -5px; position: relative;'));
+        }
+      
 
         let i = 0;
         Promise.all(cards.map(card => html2canvas(card, {}))).then(results => {
@@ -61,7 +61,9 @@
             i = i + 140;
           });
 
-          allStrongTags.forEach(el => el.setAttribute("style", ""));
+          if(navigator.userAgent.indexOf('Chrome')) {
+            allStrongTags.forEach(el => el.setAttribute("style", ""));
+          }
 
           pdf.save('sample-file.pdf');
           this.loading = false;
