@@ -1,14 +1,6 @@
 <template>
-  <el-table
-    :data="cards"
-    empty-text="Noch keine Karten angelegt"
-    style="width: 100%"
-  >
-    <el-table-column
-      prop="name"
-      label="Name"
-    >
-    </el-table-column>
+  <el-table :data="cards" empty-text="Noch keine Karten angelegt" style="width: 100%">
+    <el-table-column prop="name" label="Name"></el-table-column>
     <el-table-column>
       <template slot-scope="scope">
         <div class="text-right">
@@ -31,27 +23,27 @@
 </template>
 
 <script>
-  export default {
-      computed: {
-        cards() {
-            return this.$store.getters.getCards;
-        }
-      },
-      methods: {
-        handleDelete(id) {
-          if(window.confirm('Willst du diese Karte wirklich löschen?')){
-            this.$store.commit('deleteCard', id);
-          }
-        },
-        handleEdit(id) {
-          this.$store.commit('editCard', id);
-        }
+export default {
+  computed: {
+    cards() {
+      return this.$store.getters.getCards;
+    }
+  },
+  methods: {
+    handleDelete(id) {
+      if (window.confirm("Willst du diese Karte wirklich löschen?")) {
+        this.$store.commit("deleteCard", id);
+      }
+    },
+    handleEdit(id) {
+      this.$store.commit("editCard", id);
     }
   }
+};
 </script>
 
 <style scoped>
 .text-right {
-  text-align: right
+  text-align: right;
 }
 </style>

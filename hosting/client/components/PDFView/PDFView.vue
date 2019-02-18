@@ -1,17 +1,10 @@
 <template>
-  <el-dialog
-    v-if="dialogVisible"
-    :visible="true"
-    :fullscreen="true"
-    :before-close="handleClose"
-  >
+  <el-dialog v-if="dialogVisible" :visible="true" :fullscreen="true" :before-close="handleClose">
     <div v-for="card in cards" :key="card.id" class="cards2print">
-      <CardPreview :card-data="card" :print="true" style="margin-bottom: 20px" />
+      <CardPreview :card-data="card" :print="true" style="margin-bottom: 20px"/>
     </div>
     <span slot="title" class="dialog-footer">
-      <el-button v-loading="loading" icon="el-icon-download" @click="download">
-        Download PDF
-      </el-button>
+      <el-button v-loading="loading" icon="el-icon-download" @click="download">Download PDF</el-button>
     </span>
   </el-dialog>
 </template>
@@ -21,6 +14,10 @@
   import CardPreview from './../CardPreview/CardPreview';
   import JsPDF from 'jspdf';
   import html2canvas from 'html2canvas';
+
+  const html2canvasOptions = {
+    logging: process.env.NODE_ENV !== 'production'
+  }
 
   export default {
     components: { CardPreview },
@@ -52,12 +49,11 @@
         if(navigator.userAgent.indexOf('Chrome')) {
           allStrongTags.forEach(strong => strong.setAttribute('style', 'top: -5px; position: relative;'));
         }
-      
 
         let i = 0;
-        Promise.all(cards.map(card => html2canvas(card, {}))).then(results => {
+        Promise.all(cards.map(card => html2canvas(card, html2canvasOptions))).then(results => {
           results.forEach(canvas => {
-            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10 + i, 190, 140, '', 'FAST');
+            pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10 + i, 190, 140, undefined, 'FAST');
             i = i + 140;
           });
 
