@@ -4,7 +4,7 @@
       <CardPreview :card-data="card" :print="true" v-bind:class="{pageBreak: (index % 2 === 0)}"/>
     </div>
     <span slot="title" class="dialog-footer">
-      <el-button v-loading="loading" icon="el-icon-printer" @click="print">Drucken</el-button>
+      <el-button v-loading="loading" icon="el-icon-printer" @click="print">Drucken</el-button> &#x2190; Im Drucken-Menü einfach "Speichern als PDF" auswählen
     </span>
   </el-dialog>
 </template>
@@ -34,6 +34,9 @@
         this.$store.commit('showPdf', false);
       },
       print(){
+        if(!navigator.userAgent.includes("Chrome")){
+          alert('Bitte benutzten Sie den neusten Chrome zum drucken als PDF');
+        }
         window.print();
       }
     }

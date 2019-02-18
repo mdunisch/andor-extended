@@ -47,7 +47,8 @@ export default {
     validateJson(object) {
       if (
         !object.name ||
-        !object.newCardOpenIndex ||
+        typeof object.newCardOpenIndex === 'undefined' ||
+        typeof object.showPdf === 'undefined' ||
         !Array.isArray(object.cards)
       ) {
         return false;
