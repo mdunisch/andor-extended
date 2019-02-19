@@ -79,6 +79,7 @@ export default {
 .footer {
   display: flex;
   align-items: center;
+  border-top: 1px solid rgba(128, 128, 128, 0.3215686274509804);
 }
 .footer small {
   font-size: 12px;
