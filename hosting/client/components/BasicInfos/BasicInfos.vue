@@ -1,6 +1,6 @@
 <template>
-  <el-form label-width="120px">
-    <el-form-item label="Legenden-Name">
+  <el-form>
+    <el-form-item label="Legenden-Name" style="font-weight: bold">
       <el-input v-model="name" placeholder="Name der Legende" />
     </el-form-item>
   </el-form>

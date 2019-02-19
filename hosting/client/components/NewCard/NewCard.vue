@@ -1,8 +1,12 @@
 <template>
   <div v-if="newCardOpenIndex">
-    <el-form @submit.native.prevent="close">
+    <el-form @submit.native.prevent="close" label-width="120px">
       <el-form-item label="Name der Karte">
-        <el-input v-model="cardData.name" required />
+        <el-input 
+          v-model="cardData.name" 
+          required
+          :maxlength="(cardData.type === 'letter') ? 2 : 10"
+        />
       </el-form-item>
       <el-form-item label="Typ der Karte">
         <el-radio-group v-model="cardData.type">
@@ -10,7 +14,7 @@
           <el-radio label="custom">Sonstiges</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="Subtext der Karte">
+      <el-form-item label="Untertitel">
         <el-input
           v-model="cardData.subname"
           required
@@ -19,14 +23,14 @@
         />
       </el-form-item>
       <el-form-item label="Kartentext">
-        <el-input v-model="cardData.text" type="textarea" required rows="7" style="resize: none" />
-        <small>Text unterstützt
-          <a
-            href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"
-            target="_blank"
-          >Markdown</a>
-        </small>
+        <el-input v-model="cardData.text" type="textarea" required rows="10" />
       </el-form-item>
+      <small class="markdownText">Text unterstützt
+        <a
+          href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"
+          target="_blank"
+        >Markdown</a>
+      </small>
       <el-form-item>
         <el-row style="width: 100%">
           <el-col :span="12">
@@ -38,7 +42,7 @@
         </el-row>
       </el-form-item>
     </el-form>
-    <CardPreview :card-data="cardData" />
+    <CardPreview :card-data="cardData" style="margin: 0 auto;" />
   </div>
 </template>
 
@@ -65,4 +69,10 @@ export default {
 </script>
 
 <style scoped>
+.markdownText {
+  margin-top: -15px;
+  display: block;
+  padding-bottom: 20px;
+  text-align: right;
+}
 </style>

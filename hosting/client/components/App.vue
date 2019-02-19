@@ -10,13 +10,13 @@
       </el-aside>
       <el-main class="main">
         <el-container class="fullHeight">
-          <el-header>
+          <el-header style="height: auto;">
             <BasicInfos />
           </el-header>
           <el-main>
             <el-row style="width: 100%">
               <el-col :span="12">
-                <h5 style="margin-top: 0">Deine Karten</h5>
+                <h5 style="margin-top: 0; color: #606266; font-size: 14px">Deine Karten</h5>
               </el-col>
               <el-col :span="12" style="text-align: right;">
                 <el-button
@@ -37,7 +37,7 @@
         </el-container>
       </el-main>
     </el-container>
-    <el-footer class="footer">
+    <el-footer class="footer footer_border">
       <small>Andor/Die Legenden von Antor ist eine Marke der Franckh-Kosmos Verlags-GmbH &amp; Co. KG, durch die die vorliegende Webseite weder gesponsert noch autorisiert oder unterstützt wird.</small>
       <el-button size="mini" @click="openGoogleForms">Kontakt / Feedback</el-button>
     </el-footer>
@@ -75,12 +75,15 @@ export default {
 .main {
   background-color: #f8f8f8;
 }
-
 .footer {
   display: flex;
   align-items: center;
-  border-top: 1px solid rgba(128, 128, 128, 0.3215686274509804);
 }
+
+.footer_border {
+  border-top: 1px solid rgba(128, 128, 128, 0.3);
+}
+
 .footer small {
   font-size: 12px;
   margin-right: 20px;
