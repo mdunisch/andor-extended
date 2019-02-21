@@ -1,58 +1,68 @@
 <template>
   <el-dialog v-if="dialogVisible" :visible="true" :fullscreen="true" :before-close="handleClose">
     <div v-for="(card, index) in cards" :key="card.id" class="cards2print">
-      <CardPreview :card-data="card" :print="true" :class="{pageBreak: (index % 2 === 0)}" />
+      <CardPreview
+        :card-data="card"
+        :print="true"
+        :name="name"
+        :class="{pageBreak: (index % 2 === 0)}"
+      />
     </div>
     <span slot="title" class="dialog-footer">
-      <el-button v-loading="loading" icon="el-icon-printer" @click="print">Drucken</el-button> &#x2190; Im Drucken-Menü einfach "Speichern als PDF" auswählen
+      <el-button v-loading="loading" icon="el-icon-printer" @click="print">Drucken</el-button>&#x2190; Im Drucken-Menü einfach "Speichern als PDF" auswählen
     </span>
   </el-dialog>
 </template>
 
 <script>
+import CardPreview from "andor-legendenkarte";
 
-  import CardPreview from './../CardPreview/CardPreview';
-
-  export default {
-    components: { CardPreview },
-     data() {
-      return {
-        loading: false
-      }
+export default {
+  components: { CardPreview },
+  data() {
+    return {
+      loading: false
+    };
+  },
+  computed: {
+    dialogVisible() {
+      return this.$store.state.showPdf;
     },
-    computed: {
-      dialogVisible() {
-        return this.$store.state.showPdf;
-      },
-      cards(){
-          return this.$store.getters.getCards;
-      }
+    cards() {
+      return this.$store.getters.getCards;
     },
-    methods: {
-      handleClose(){
-        this.$store.commit('showPdf', false);
-      },
-      print(){
-        if(!navigator.userAgent.includes("Chrome")){
-          alert('Bitte benutzten Sie den neusten Chrome zum drucken als PDF');
-        }
-        window.print();
+    name() {
+      return this.$store.state.name;
+    }
+  },
+  methods: {
+    handleClose() {
+      this.$store.commit("showPdf", false);
+    },
+    print() {
+      if (!navigator.userAgent.includes("Chrome")) {
+        alert("Bitte benutzten Sie den neusten Chrome zum drucken als PDF");
       }
+      window.print();
     }
   }
+};
 </script>
 
 <style scoped>
 .pageBreak {
   page-break-before: always;
-  margin-top: 20px!important;
+  margin-top: 20px !important;
 }
 </style>
 
 <style>
 @media print {
-  .el-dialog__header, .v-modal, footer, .el-container.fullHeight > .el-container {
-    display: none!important;
+  .el-dialog__header,
+  .v-modal,
+  footer,
+  .el-container.fullHeight > .el-container {
+    display: none !important;
   }
   .el-dialog__wrapper {
     position: relative;

@@ -5,7 +5,7 @@
         <el-input 
           v-model="cardData.name" 
           required
-          :maxlength="(cardData.type === 'letter') ? 2 : 10"
+          :maxlength="(cardData.type === 'letter') ? 2 : 100"
         />
       </el-form-item>
       <el-form-item label="Typ der Karte">
@@ -42,18 +42,18 @@
         </el-row>
       </el-form-item>
     </el-form>
-    <CardPreview :card-data="cardData" style="margin: 0 auto;" />
+    <CardPreview :card-data="cardData" :name="name" style="margin: 0 auto;" />
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import CardPreview from "./../CardPreview/CardPreview";
+import CardPreview from "andor-legendenkarte";
 
 export default {
   components: { CardPreview },
   computed: {
-    ...mapState(["newCardOpenIndex"]),
+    ...mapState(["newCardOpenIndex", "name"]),
     cardData() {
       return this.$store.state.cards.find(
         i => i.id === this.$store.state.newCardOpenIndex
