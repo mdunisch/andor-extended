@@ -3,7 +3,7 @@
     <div v-for="(card, index) in cards" :key="card.id" class="cards2print">
       <CardPreview
         :card-data="card"
-        :print="true"
+        card-type="print"
         :name="name"
         :class="{pageBreak: (index % 2 === 0)}"
       />
