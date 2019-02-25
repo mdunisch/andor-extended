@@ -61,7 +61,7 @@ export default {
     }
   },
   methods: {
-    close(r) {
+    close() {
       this.$store.commit("closeCardWindow");
     }
   }
