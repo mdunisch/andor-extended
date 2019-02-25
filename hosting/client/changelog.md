@@ -1,3 +1,0 @@
-- Card -> Extern git module
-- Fix Issues with log names
-- Fix MaxLength=10 Issue on card type custom
