@@ -1,6 +1,6 @@
 <template>
   <div v-if="newCardOpenIndex">
-    <el-form @submit.native.prevent="close" label-width="120px">
+    <el-form label-width="120px" @submit.native.prevent="close">
       <el-form-item label="Name der Karte">
         <el-input 
           v-model="cardData.name" 
@@ -61,7 +61,7 @@ export default {
     }
   },
   methods: {
-    close() {
+    close(r) {
       this.$store.commit("closeCardWindow");
     }
   }
