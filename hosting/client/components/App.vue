@@ -38,7 +38,7 @@
       </el-main>
     </el-container>
     <el-footer class="footer footer_border">
-      <small>Andor/Die Legenden von Antor ist eine Marke der Franckh-Kosmos Verlags-GmbH &amp; Co. KG, durch die die vorliegende Webseite weder gesponsert noch autorisiert oder unterstützt wird.</small>
+      <small>Andor/Die Legenden von Andor ist eine Marke der Franckh-Kosmos Verlags-GmbH &amp; Co. KG, durch die die vorliegende Webseite weder gesponsert noch autorisiert oder unterstützt wird.</small>
       <el-button size="mini" @click="openGoogleForms">Kontakt / Feedback</el-button>
     </el-footer>
     <PDFView />
