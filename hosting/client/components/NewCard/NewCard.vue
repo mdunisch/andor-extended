@@ -24,7 +24,7 @@
         />
       </el-form-item>
       <el-form-item label="Kartentext">
-        <el-input v-model="cardData.text" type="textarea" required rows="10"/>
+        <el-input v-model="cardData.text" type="textarea" required rows="10" />
       </el-form-item>
       <small class="markdownText">
         Text unterstützt
