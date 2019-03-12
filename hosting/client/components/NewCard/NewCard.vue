@@ -2,10 +2,11 @@
   <div v-if="newCardOpenIndex">
     <el-form label-width="120px" @submit.native.prevent="close">
       <el-form-item label="Name der Karte">
-        <el-input 
-          v-model="cardData.name" 
-          required
+        <el-input
+          v-model="cardData.name"
+          aria-required=""
           :maxlength="(cardData.type === 'letter') ? 2 : 100"
+          @change="setSlug"
         />
       </el-form-item>
       <el-form-item label="Typ der Karte">
@@ -23,9 +24,10 @@
         />
       </el-form-item>
       <el-form-item label="Kartentext">
-        <el-input v-model="cardData.text" type="textarea" required rows="10" />
+        <el-input v-model="cardData.text" type="textarea" required rows="10"/>
       </el-form-item>
-      <small class="markdownText">Text unterstützt
+      <small class="markdownText">
+        Text unterstützt
         <a
           href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"
           target="_blank"
@@ -63,8 +65,12 @@ export default {
   methods: {
     close() {
       this.$store.commit("closeCardWindow");
+    },
+    setSlug(){
+      this.$store.commit('setSlug', this.cardData.name);
     }
   }
+  
 };
 </script>
 
