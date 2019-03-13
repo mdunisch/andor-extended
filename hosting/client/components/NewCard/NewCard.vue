@@ -6,7 +6,7 @@
           v-model="cardData.name"
           aria-required=""
           :maxlength="(cardData.type === 'letter') ? 2 : 100"
-          @change="setSlug"
+          @input="setSlug"
         />
       </el-form-item>
       <el-form-item label="Typ der Karte">

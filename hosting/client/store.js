@@ -17,10 +17,12 @@ function slugify(string) {
     .replace(/\s+/g, '-') // Replace spaces with -
     .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
     .replace(/&/g, '-and-') // Replace & with ‘and’
-    .replace(/[^w-]+/g, '') // Remove all non-word characters
-    .replace(/--+/g, '-') // Replace multiple - with single -
+    // Remove all non-word characters 
+    .replace(/[^\w\-]+/g, '') // eslint-disable-line no-useless-escape 
+    // Replace multiple - with single -
+    .replace(/\-\-+/g, '-') // eslint-disable-line no-useless-escape 
     .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, '') // Trim - from end of text
+    .replace(/-+$/, '') // Trim - from end of text */
 }
 
 
@@ -71,8 +73,13 @@ export default new Vuex.Store({
     },
     setSlug(state, newName){
 
+
       // Create new Slug
       let slug = slugify(newName);
+
+
+      console.log(newName);
+      console.log(slugify(newName));
 
       // Add 1 if there a other cards have the same slug
       while(state.cards.filter(i => i.slug === slug && i.id !== state.newCardOpenIndex).length !== 0){
