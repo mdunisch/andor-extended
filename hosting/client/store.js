@@ -72,14 +72,9 @@ export default new Vuex.Store({
       state.name = newName;
     },
     setSlug(state, newName){
-
-
+      
       // Create new Slug
       let slug = slugify(newName);
-
-
-      console.log(newName);
-      console.log(slugify(newName));
 
       // Add 1 if there a other cards have the same slug
       while(state.cards.filter(i => i.slug === slug && i.id !== state.newCardOpenIndex).length !== 0){
