@@ -33,13 +33,26 @@ function slugify(string) {
  * @returns {number} 
  */
 const sorter = (card1, card2) => {
+
+  // treat end as letter
+  let newCard1 = { ...card1 };
+  let newCard2 = { ...card2 };
+
+  if (newCard1.type === 'end') {
+    newCard1.type = 'letter';
+  }
+
+  if (newCard2.type === 'end') {
+    newCard2.type = 'letter';
+  }
+
   // If not the same type order by type
-  if(card2.type !== card1.type) {
-    return (card2.type === 'letter') ? 1 : -1;
+  if (newCard2.type !== newCard1.type) {
+    return (newCard2.type === 'letter') ? 1 : -1;
   }
 
   // Sort by name
-  return card1.name.localeCompare(card2.name);
+  return newCard1.name.localeCompare(newCard2.name);
 };
 
 
@@ -49,8 +62,7 @@ export default new Vuex.Store({
     name: 'Die dunklen weiten von Andor',
     newCardOpenIndex: 1,
     showPdf: false,
-    cards: [
-      {
+    cards: [{
         type: 'letter',
         name: 'A1',
         slug: 'a1',
@@ -64,6 +76,14 @@ export default new Vuex.Store({
         subname: 'Diese Karte wird aufgedeckt, sobald die Dunkelheit in der Burg ist',
         text: '*Nach dem Sieg über den Drachen Tarok ist es Varkur gelungen, ein Drachenei in seinen Besitz zu bringen. Einen zweiten Drachen würde Andor nicht überleben, doch glücklicherweise konnten die Helden das Drachenei stehlen. Doch die eigentliche Aufgabe fängt gerade erst an: Um das Drachenei zu zerstören, müssen die Helden mehr altes Wissen über die Drachen zusammentragen und gleichzeitig den Bewohnern Andors helfen, sich von Taroks Angriff zu erholen.*\n\n***\n**Legendenziel:**\nAlle Feld um die Brug (Feld 22, 34, 45, 34 und 33) müssen von der Dunkelheit befreit sein.\n***\n**Wichtig:** Für jeden Feld, das ein Held die Dunkelheit bekämpft, muss der Held Willenspunkte abgeben:\nbei **2** Spielern **pro Feld 2 Willenspunkte**\nbei **3** Spielern **pro Feld 3 Willenspunkte**\nbei **4** Spielern **pro Feld 4 Willenspunkte**\n',
         id: 2
+      },
+      {
+        type: 'end',
+        name: 'N',
+        slug: 'N',
+        success: 'Die Legende nahm ein **gutes Ende,** wenn ...\n... der König in der Burg ist und ...\n... die Burg erfolgreich verteidigt wurde.\n\n*Es war der Eskorte des Königs zu verdanken, dass dieser noch einmal auf seine Burg zurückkehrte. Der Regen hörte endlich auf und ein Regenboden spannte sich über den Innenhof.*',
+        failure: 'Die Legende nahm ein **böses Ende**, wenn ...\n... der König **nicht** in der Burg ist ...\n... die Burg **nicht** erfolgreich verteidigt wurde.\n\nWenn ihr den Schwierigkeitsgrad der Legende etwas senden wollt, spielt doch einfach besser.',
+        id: 3
       }
     ]
   },
@@ -71,35 +91,35 @@ export default new Vuex.Store({
     setName(state, newName) {
       state.name = newName;
     },
-    setSlug(state, newName){
-      
+    setSlug(state, newName) {
+
       // Create new Slug
       let slug = slugify(newName);
 
       // Add 1 if there a other cards have the same slug
-      while(state.cards.filter(i => i.slug === slug && i.id !== state.newCardOpenIndex).length !== 0){
+      while (state.cards.filter(i => i.slug === slug && i.id !== state.newCardOpenIndex).length !== 0) {
         slug += 1;
       }
 
       // Set new Slug
       state.cards.find(i => i.id === state.newCardOpenIndex).slug = slug;
     },
-    loadState(state, newState){
+    loadState(state, newState) {
       state.name = newState.name;
       state.newCardOpenIndex = newState.newCardOpenIndex;
       state.cards = newState.cards;
 
       // If slugs a missing
-      if(state.cards.some(i => typeof i.slug === "undefined")){
+      if (state.cards.some(i => typeof i.slug === "undefined")) {
         state.cards.forEach(card => {
           card.slug = slugify(card.name);
         });
       }
     },
     deleteCard(state, cardId) {
-      
+
       // if this card is currently open
-      if(state.newCardOpenIndex === cardId){
+      if (state.newCardOpenIndex === cardId) {
         state.newCardOpenIndex = null;
       }
 
@@ -108,11 +128,11 @@ export default new Vuex.Store({
     editCard(state, cardId) {
       state.newCardOpenIndex = cardId;
     },
-    showPdf(state, visible){
+    showPdf(state, visible) {
       state.showPdf = visible;
     },
     closeCardWindow(state) {
-      state.newCardOpenIndex  = null;
+      state.newCardOpenIndex = null;
     },
     addCard(state) {
 

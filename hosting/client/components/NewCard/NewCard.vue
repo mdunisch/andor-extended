@@ -12,10 +12,11 @@
       <el-form-item label="Typ der Karte">
         <el-radio-group v-model="cardData.type">
           <el-radio label="letter">Buchstabe</el-radio>
+          <el-radio label="end">Spielende (meißt N)</el-radio>
           <el-radio label="custom">Sonstiges</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="Untertitel">
+      <el-form-item v-if="(cardData.type === 'custom')" label="Untertitel">
         <el-input
           v-model="cardData.subname"
           required
@@ -23,9 +24,17 @@
           :disabled="(cardData.type === 'letter')"
         />
       </el-form-item>
-      <el-form-item label="Kartentext">
+      <el-form-item v-if="(cardData.type !== 'end')" label="Kartentext">
         <el-input v-model="cardData.text" type="textarea" required rows="10" />
       </el-form-item>
+      <div v-if="(cardData.type === 'end')">
+        <el-form-item label="Erfolgstext">
+          <el-input v-model="cardData.success" type="textarea" required rows="7" />
+        </el-form-item>
+        <el-form-item label="Misserfolg">
+          <el-input v-model="cardData.failure" type="textarea" required rows="7" />
+        </el-form-item>
+      </div>
       <small class="markdownText">
         Text unterstützt
         <a

@@ -12,7 +12,7 @@
     "file-saver": "^2.0.1",
     "nanoid": "^2.0.1",
     "rimraf": "^2.6.3",
-    "vue": "^2.6.8",
+    "vue": "^2.6.9",
     "vuex": "^3.1.0"
   },
   "devDependencies": {
@@ -20,11 +20,11 @@
     "@babel/preset-env": "^7.3.4",
     "@vue/component-compiler-utils": "^2.6.0",
     "babel-plugin-component": "^1.1.1",
-    "eslint": "^5.15.1",
+    "eslint": "^5.15.2",
     "eslint-plugin-vue": "^5.2.2",
-    "parcel-bundler": "^1.12.1",
+    "parcel-bundler": "^1.12.2",
     "vue-hot-reload-api": "^2.3.3",
-    "vue-template-compiler": "^2.6.8"
+    "vue-template-compiler": "^2.6.9"
   },
   "scripts": {
     "predev": "rimraf dist",
