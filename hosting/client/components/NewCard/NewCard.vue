@@ -40,6 +40,7 @@
         <a
           href="https://help.github.com/articles/basic-writing-and-formatting-syntax/"
           target="_blank"
+          rel="noopener"
         >Markdown</a>
       </small>
       <el-form-item>

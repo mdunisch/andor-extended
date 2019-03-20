@@ -38,7 +38,7 @@
       </el-main>
     </el-container>
     <el-footer class="footer footer_border">
-      <small>Andor/Die Legenden von Andor ist eine Marke der Franckh-Kosmos Verlags-GmbH &amp; Co. KG, durch die die vorliegende Webseite weder gesponsert noch autorisiert oder unterstützt wird.</small>
+      <small>Andor/Die Legenden von Andor ist eine Marke des Autors Michael Menzel und der Franckh-Kosmos Verlags-GmbH &amp; Co. KG. Diese Webanwendungen und deren Inhalte sind keine offiziellen Andor-Produkte und sind weder vom Autor noch vom Verlag gesponsert, autorisiert oder unterstützt. Dies ist ein Open-Source-Projekt der Andor-Community.</small>
       <el-button size="mini" @click="openGoogleForms">Kontakt / Feedback</el-button>
     </el-footer>
     <PDFView />
@@ -86,6 +86,6 @@ export default {
 
 .footer small {
   font-size: 12px;
-  margin-right: 20px;
+  margin-right: 50px;
 }
 </style>
