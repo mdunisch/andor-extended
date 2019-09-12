@@ -60,6 +60,7 @@ export default new Vuex.Store({
   //strict: true,
   state: {
     name: 'Die dunklen weiten von Andor',
+    number: '',
     newCardOpenIndex: 1,
     showPdf: false,
     cards: [{
@@ -91,6 +92,9 @@ export default new Vuex.Store({
     setName(state, newName) {
       state.name = newName;
     },
+    setNumber(state, newNumber) {
+      state.number = newNumber;
+    },
     setSlug(state, newName) {
 
       // Create new Slug
@@ -106,6 +110,7 @@ export default new Vuex.Store({
     },
     loadState(state, newState) {
       state.name = newState.name;
+      state.number = newState.number;
       state.newCardOpenIndex = newState.newCardOpenIndex;
       state.cards = newState.cards;
 

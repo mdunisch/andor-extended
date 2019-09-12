@@ -5,6 +5,7 @@
         :card-data="card"
         card-type="print"
         :name="name"
+        :number="number"
         :class="{pageBreak: (index % 2 === 0)}"
       />
     </div>
@@ -33,6 +34,9 @@ export default {
     },
     name() {
       return this.$store.state.name;
+    },
+    number() {
+      return this.$store.state.number;
     }
   },
   methods: {
