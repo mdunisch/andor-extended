@@ -28,3 +28,7 @@ body {
 .loading .sk-folding-cube {
     margin: 10% auto;
 }
+
+.card {
+  word-break: normal;
+}
