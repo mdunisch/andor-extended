@@ -118,6 +118,7 @@ export default new Vuex.Store({
     },
     loadState(state, newState) {
       state.name = newState.name;
+      state.type = newState.type;
       state.series = newState.series;
       state.number = newState.number;
       state.newCardOpenIndex = newState.newCardOpenIndex;
