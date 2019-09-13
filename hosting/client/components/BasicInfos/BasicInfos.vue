@@ -3,7 +3,7 @@
     <el-form-item label="Legenden-Name" style="font-weight: bold">
       <el-input v-model="name" placeholder="Name der Legende" />
     </el-form-item>
-    <el-form-item label="Legenden-Nummer" style="font-weight: bold">
+    <el-form-item label="Legenden-Nummer (Optional)" style="font-weight: bold">
       <el-input
         v-model="number"
         placeholder="Nummer der Legende"
