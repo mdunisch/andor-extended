@@ -13,6 +13,7 @@
         <el-radio-group v-model="cardData.type">
           <el-radio label="letter">Buchstabe</el-radio>
           <el-radio label="end">Spielende (meißt N)</el-radio>
+          <el-radio label="put">Anlegekarte</el-radio>
           <el-radio label="custom">Sonstiges</el-radio>
         </el-radio-group>
       </el-form-item>
