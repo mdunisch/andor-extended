@@ -89,7 +89,7 @@ export default new Vuex.Store({
         type: 'put',
         name: 'Der Handel',
         slug: 'der-handel',
-        text: '*Wie so oft begab es sich, dass Garzwog den Helden einen Handel anbot.*\n\Jedem Helden ist es nun einmalig möglich **2 Stärkepunkte** im tausch gegen **6 Gold** zu erhalten.\n',
+        text: '*Wie so oft begab es sich, dass Garzwog den Helden einen Handel anbot.*\nJedem Helden ist es nun einmalig möglich **2 Stärkepunkte** im tausch gegen **6 Gold** zu erhalten.\n',
         id: 4
       }
     ]
