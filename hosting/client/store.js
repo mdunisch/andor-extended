@@ -60,6 +60,7 @@ export default new Vuex.Store({
   //strict: true,
   state: {
     name: 'Die dunklen weiten von Andor',
+    type: 'single',
     series: '',
     number: '',
     newCardOpenIndex: 1,
@@ -92,6 +93,9 @@ export default new Vuex.Store({
   mutations: {
     setName(state, newName) {
       state.name = newName;
+    },
+    setType(state, newType) {
+      state.type = newType;
     },
     setSeries(state, newName) {
       state.series = newName;

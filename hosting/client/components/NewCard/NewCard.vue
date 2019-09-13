@@ -54,7 +54,7 @@
         </el-row>
       </el-form-item>
     </el-form>
-    <CardPreview :card-data="cardData" :name="name" :series="series" :number="number" style="margin: 0 auto;" />
+    <CardPreview :card-data="cardData" :name="name" :type="type" :series="series" :number="number" style="margin: 0 auto;" />
   </div>
 </template>
 
@@ -66,6 +66,7 @@ export default {
   components: { CardPreview },
   computed: {
     ...mapState(["newCardOpenIndex", "name"]),
+    ...mapState(["newCardOpenIndex", "type"]),
     ...mapState(["newCardOpenIndex", "number"]),
     ...mapState(["newCardOpenIndex", "series"]),
     cardData() {
@@ -82,7 +83,7 @@ export default {
       this.$store.commit('setSlug', this.cardData.name);
     }
   }
-  
+
 };
 </script>
 
