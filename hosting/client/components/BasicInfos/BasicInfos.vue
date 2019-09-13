@@ -3,10 +3,16 @@
     <el-form-item label="Legenden-Name" style="font-weight: bold">
       <el-input v-model="name" placeholder="Name der Legende" />
     </el-form-item>
+    <el-form-item label="Serien-Name (Optional)" style="font-weight: bold">
+      <el-input
+        v-model="series"
+        placeholder="Name der Legendenserie"
+      />
+    </el-form-item>
     <el-form-item label="Legenden-Nummer (Optional)" style="font-weight: bold">
       <el-input
         v-model="number"
-        placeholder="Nummer der Legende"
+        placeholder="Nummer der Legende innerhalb der Serie"
         :maxlength="1"
       />
     </el-form-item>
@@ -21,6 +27,14 @@ export default {
       },
       set(value) {
         this.$store.commit("setName", value);
+      }
+    },
+    series: {
+      get() {
+        return this.$store.state.series;
+      },
+      set(value) {
+        this.$store.commit("setSeries", value);
       }
     },
     number: {

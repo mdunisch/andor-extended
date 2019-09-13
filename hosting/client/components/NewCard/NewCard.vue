@@ -54,7 +54,7 @@
         </el-row>
       </el-form-item>
     </el-form>
-    <CardPreview :card-data="cardData" :name="name" :number="number" style="margin: 0 auto;" />
+    <CardPreview :card-data="cardData" :name="name" :series="series" :number="number" style="margin: 0 auto;" />
   </div>
 </template>
 
@@ -67,6 +67,7 @@ export default {
   computed: {
     ...mapState(["newCardOpenIndex", "name"]),
     ...mapState(["newCardOpenIndex", "number"]),
+    ...mapState(["newCardOpenIndex", "series"]),
     cardData() {
       return this.$store.state.cards.find(
         i => i.id === this.$store.state.newCardOpenIndex
