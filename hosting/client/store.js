@@ -84,6 +84,13 @@ export default new Vuex.Store({
         success: 'Die Legende nahm ein **gutes Ende,** wenn ...\n... der König in der Burg ist und ...\n... die Burg erfolgreich verteidigt wurde.\n\n*Es war der Eskorte des Königs zu verdanken, dass dieser noch einmal auf seine Burg zurückkehrte. Der Regen hörte endlich auf und ein Regenboden spannte sich über den Innenhof.*',
         failure: 'Die Legende nahm ein **böses Ende**, wenn ...\n... der König **nicht** in der Burg ist ...\n... die Burg **nicht** erfolgreich verteidigt wurde.\n\nWenn ihr den Schwierigkeitsgrad der Legende etwas senden wollt, spielt doch einfach besser.',
         id: 3
+      },
+      {
+        type: 'put',
+        name: 'Der Handel',
+        slug: 'der-handel',
+        text: '*Wie so oft begab es sich, dass Garzwog den Helden einen Handel anbot.*\nJedem Helden ist es nun einmalig möglich **2 Stärkepunkte** im tausch gegen **6 Gold** zu erhalten.\n',
+        id: 4
       }
     ]
   },
