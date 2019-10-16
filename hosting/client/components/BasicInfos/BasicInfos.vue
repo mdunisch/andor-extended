@@ -40,6 +40,10 @@ export default {
         return this.$store.state.type;
       },
       set(value) {
+        if (value == 'single') {
+          this.$store.commit("setSeries", '');
+          this.$store.commit("setNumber", '');
+        }
         this.$store.commit("setType", value);
       }
     },
