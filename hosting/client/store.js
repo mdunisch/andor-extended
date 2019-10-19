@@ -61,8 +61,8 @@ export default new Vuex.Store({
   state: {
     name: 'Die dunklen weiten von Andor',
     type: 'single',
-    series: '',
-    number: '',
+    series: null,
+    number: null,
     newCardOpenIndex: 1,
     showPdf: false,
     cards: [{
@@ -125,9 +125,9 @@ export default new Vuex.Store({
     },
     loadState(state, newState) {
       state.name = newState.name;
-      state.type = newState.type;
-      state.series = newState.series;
-      state.number = newState.number;
+      state.type = newState.type || 'single';
+      state.series = newState.series || null;
+      state.number = newState.number || null;
       state.newCardOpenIndex = newState.newCardOpenIndex;
       state.cards = newState.cards;
 
